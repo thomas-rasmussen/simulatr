@@ -4,34 +4,34 @@
 #' symmetric positive semidefinite matrix with unit diagonal.
 #'
 #' The function will terminate with an error if the input object is a not a
-#' square matrix with real values. For convenience, the input matrix can also
+#' square matrix with numeric values. For convenience, the input matrix can also
 #' be given in lower/upper triangular form by specifying
 #' \code{type = "triangular"}.
 #'
-#' @param matrix square matrix with real values
+#' @param x square matrix with real values
 #' @param type "full" or "triangular". See details.
 #'
 #' @return boolean
 #' @export
 #'
 #' @examples
-#' matrix <- diag(c(1, 1, 1))
-#' is_corr_matrix(matrix)
-#' matrix[upper.tri(matrix)] <- 0.5
-#' is_corr_matrix(matrix)
-#' is_corr_matrix(matrix, type = "triangular")
-is_corr_matrix <- function(matrix, type = c("full", "triangular")) {
+#' x <- diag(c(1, 1, 1))
+#' is_corr_matrix(x)
+#' x[upper.tri(x)] <- 0.5
+#' is_corr_matrix(x)
+#' is_corr_matrix(x, type = "triangular")
+is_corr_matrix <- function(x, type = c("full", "triangular")) {
 
   # Input checks
   type <- match.arg(type)
-  if (!is.matrix(matrix)) {
-    stop("Input not a matrix")
+  if (!is.matrix(x)) {
+    stop("x not a matrix")
   }
-  if (!nrow(matrix) == ncol(matrix)) {
-    stop("matrix is not square")
+  if (!nrow(x) == ncol(x)) {
+    stop("x not a square matrix")
   }
-  if (!is.numeric(matrix)) {
-    stop("matrix must have real values")
+  if (!is.numeric(x)) {
+    stop("x must have numeric values")
   }
   if (type == "triangular") {
     # Check that the matrix is actually on either upper or lower triangular
@@ -39,8 +39,8 @@ is_corr_matrix <- function(matrix, type = c("full", "triangular")) {
 
     # Length of vector with upper/lower matrix entries is the same since matrix
     # is guarantied to be symmetric at this point.
-    low <- matrix[lower.tri(matrix)]
-    up <- matrix[upper.tri(matrix)]
+    low <- x[lower.tri(x)]
+    up <- x[upper.tri(x)]
     len <- length(low)
     # If lower triangular zeroes, and upper is not, or vice versa, the matrix
     # is on triangular form.
@@ -50,24 +50,24 @@ is_corr_matrix <- function(matrix, type = c("full", "triangular")) {
   }
 
   # Check unit diagonal
-  if (!isTRUE(all.equal(rep(1, length(diag(matrix))), diag(matrix)))) {
+  if (!isTRUE(all.equal(rep(1, length(diag(x))), diag(x)))) {
     return(FALSE)
   }
 
   # Convert lower/upper triangular matrix to full matrix
   if (type == "triangular") {
-    matrix <- matrix + t(matrix)
-    diag(matrix) <- rep(1, length(diag(matrix)))
+    x <- x + t(x)
+    diag(x) <- rep(1, length(diag(x)))
   }
 
   # Check if symmetric
-  if (!isSymmetric(matrix)) {
+  if (!isSymmetric(x)) {
     return(FALSE)
   }
 
   # Check if matrix is positive semidefinite. This is equivalent to checking
   # if the determinant is larger than or equal to zero.
-  if (!det(matrix) >= 0) {
+  if (!det(x) >= 0) {
     return(FALSE)
   }
 

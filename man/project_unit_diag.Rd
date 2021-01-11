@@ -2,21 +2,21 @@
 % Please edit documentation in R/project_unit_diag.R
 \name{project_unit_diag}
 \alias{project_unit_diag}
-\title{Project square matrix onto set of matrices with unit diagonal.}
+\title{Project matrix onto set of matrices with unit diagonal.}
 \usage{
-project_unit_diag(matrix)
+project_unit_diag(x)
 }
 \arguments{
-\item{matrix}{a square matrix}
+\item{x}{a square matrix}
 }
 \value{
 matrix
 }
 \description{
-Projects a square matrix onto the set of matrices with unit diagonal, by
-simply replacing the diagonal elements with ones.
+Projects a numeric square matrix onto the set of matrices with unit diagonal,
+by simply replacing the diagonal elements with ones.
 }
 \examples{
-matrix <- diag(c(0, 0))
-project_unit_diag(matrix)
+x <- diag(c(0, 0))
+project_unit_diag(x)
 }

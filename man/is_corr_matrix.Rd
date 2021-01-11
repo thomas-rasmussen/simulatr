@@ -4,10 +4,10 @@
 \alias{is_corr_matrix}
 \title{Tests if object is a correlation matrix}
 \usage{
-is_corr_matrix(matrix, type = c("full", "triangular"))
+is_corr_matrix(x, type = c("full", "triangular"))
 }
 \arguments{
-\item{matrix}{square matrix with real values}
+\item{x}{square matrix with real values}
 
 \item{type}{"full" or "triangular". See details.}
 }
@@ -20,14 +20,14 @@ symmetric positive semidefinite matrix with unit diagonal.
 }
 \details{
 The function will terminate with an error if the input object is a not a
-square matrix with real values. For convenience, the input matrix can also
+square matrix with numeric values. For convenience, the input matrix can also
 be given in lower/upper triangular form by specifying
 \code{type = "triangular"}.
 }
 \examples{
-matrix <- diag(c(1, 1, 1))
-is_corr_matrix(matrix)
-matrix[upper.tri(matrix)] <- 0.5
-is_corr_matrix(matrix)
-is_corr_matrix(matrix, type = "triangular")
+x <- diag(c(1, 1, 1))
+is_corr_matrix(x)
+x[upper.tri(x)] <- 0.5
+is_corr_matrix(x)
+is_corr_matrix(x, type = "triangular")
 }

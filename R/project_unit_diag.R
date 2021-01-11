@@ -1,29 +1,29 @@
-#' Project square matrix onto set of matrices with unit diagonal.
+#' Project matrix onto set of matrices with unit diagonal.
 #'
-#' Projects a square matrix onto the set of matrices with unit diagonal, by
-#' simply replacing the diagonal elements with ones.
+#' Projects a numeric square matrix onto the set of matrices with unit diagonal,
+#' by simply replacing the diagonal elements with ones.
 #'
-#' @param matrix a square matrix
+#' @param x a square matrix
 #'
 #' @return matrix
 #' @export
 #'
 #' @examples
-#' matrix <- diag(c(0, 0))
-#' project_unit_diag(matrix)
-project_unit_diag <- function(matrix) {
+#' x <- diag(c(0, 0))
+#' project_unit_diag(x)
+project_unit_diag <- function(x) {
 
   # Input checks
-  if (!is.matrix(matrix)) {
-    stop("Input not a matrix")
+  if (!is.matrix(x)) {
+    stop("x not a matrix")
   }
-  if (nrow(matrix) != ncol(matrix)) {
-    stop("Matrix is not square")
+  if (nrow(x) != ncol(x)) {
+    stop("x not a square matrix")
   }
-  if(!is.numeric(matrix)) {
-    stop("Matrix must have real values")
+  if(!is.numeric(x)) {
+    stop("x must have numeric values")
   }
 
-  diag(matrix) <- 1
-  return(matrix)
+  diag(x) <- 1
+  return(x)
 }
