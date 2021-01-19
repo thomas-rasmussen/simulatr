@@ -36,15 +36,7 @@ is_corr_matrix <- function(x, type = c("full", "triangular")) {
   if (type == "triangular") {
     # Check that the matrix is actually on either upper or lower triangular
     # form
-
-    # Length of vector with upper/lower matrix entries is the same since matrix
-    # is guarantied to be symmetric at this point.
-    low <- x[lower.tri(x)]
-    up <- x[upper.tri(x)]
-    len <- length(low)
-    # If lower triangular zeroes, and upper is not, or vice versa, the matrix
-    # is on triangular form.
-    if (!(isTRUE(all.equal(low, rep(0, len))) != isTRUE(all.equal(up, rep(0, len))))){
+    if (!is_triangular(x)){
       stop("type = \"triangular\", but matrix is not on triangular form")
     }
   }

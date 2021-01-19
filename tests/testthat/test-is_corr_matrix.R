@@ -44,8 +44,16 @@ test_that("correlation matrices on triangular form are handled properly", {
   expect_equal(is_corr_matrix(x, type = "triangular"), TRUE)
 
   #  x falsely specified as triangular
-  x <- matrix(1)
-  expect_error(is_corr_matrix(x, type = "triangular"), "matrix is not on triangular form")
   x <- matrix(c(1, 0.5, 0, 0.5, 1, 0, 0.5, 0.5, 1), nrow = 3, ncol = 3)
   expect_error(is_corr_matrix(x, type = "triangular"), "matrix is not on triangular form")
-})
+
+  # diagonal correlation matrices
+  x <- matrix(1)
+  expect_error(is_corr_matrix(x), NA)
+  expect_error(is_corr_matrix(x, type = "triangular"), NA)
+  x <- diag(c(1, 1))
+  expect_error(is_corr_matrix(x), NA)
+  expect_error(is_corr_matrix(x, type = "triangular"), NA)
+  })
+
+
