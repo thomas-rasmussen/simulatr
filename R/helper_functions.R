@@ -25,3 +25,14 @@ is_valid_variable_name <- function(x, allow_reserved = FALSE, unique = FALSE)
   ok[x != make.names(x, unique = unique)] <- FALSE
   ok
 }
+
+is_empty_dt <- function(x) {
+  if (!is.data.table(x)) {
+    stop("`x` is not a data.table")
+  }
+  if (ncol(x) == 0 & nrow(x) == 0) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}

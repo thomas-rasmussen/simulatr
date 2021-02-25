@@ -16,3 +16,7 @@ matrix. Correlation matrix on full from.
 Transforms a correlation matrix on triangular form to a correlation
 matrix on full form.
 }
+\examples{
+x <- matrix(c(1, 0, 0.5, 1), nrow = 2, ncol = 2)
+trans_triangular_corr(x)
+}

@@ -9,6 +9,8 @@
 #' @export
 #'
 #' @examples
+#' x <- matrix(c(1, 0, 0.5, 1), nrow = 2, ncol = 2)
+#' trans_triangular_corr(x)
 trans_triangular_corr <- function(x) {
   # Input checks
   if (!is_triangular(x)) {
