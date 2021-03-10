@@ -37,7 +37,7 @@ simulate_indicator <- function(x,
     lp_text <- paste0(lp_text, "-", i_beta, "*", i_var)
   }
 
-  x[, (var_name) := rbinom(nrow(x), 1, 1 / (1 + exp((eval(parse(text = lp_text))))))]
+  x[, (var_name) := stats::rbinom(nrow(x), 1, 1 / (1 + exp((eval(parse(text = lp_text))))))]
 
   x
 }

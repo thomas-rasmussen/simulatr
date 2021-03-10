@@ -29,7 +29,7 @@ simulate_plan <- function(x, n_dataset, n_obs) {
     }
 
     # add dataset variable
-    dat[, dataset := rep(1:n_dataset, each = n_obs)]
+    dat[, ("dataset") := rep(1:n_dataset, each = n_obs)]
 
     dat
 }
