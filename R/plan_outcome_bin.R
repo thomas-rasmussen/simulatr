@@ -72,17 +72,22 @@ plan_outcome_bin <- function(x,
 
 
 
-  #### TODO ####
-
-  # It is impossible to control % with outcome (through alpha0) and the treatment
-  # effect (through beta) at the same time? Tweaking one will clearly
-  # affect the other? The primary goal is to induce a disired treatment effect
-  # will just have to make due with estimating the % with outcome and add it to
-  # the plan model info?
-
-  # Should there be a function for each estimator?
 
   #### return updated plan ####
 
   x
 }
+
+
+#### TODO ####
+
+# It is impossible to control % with outcome (through alpha0) and the treatment
+# effect (through beta) at the same time? Tweaking one will clearly
+# affect the other? The primary goal is to induce a disired treatment effect
+# will just have to make due with estimating the % with outcome and add it to
+# the plan model info?
+
+# Should there be a function for each estimator?
+
+# Implementation based on Austin
+# A Data-Generation Process for Data with SpecifiedRisk Differences or Numbers Needed to Treat
