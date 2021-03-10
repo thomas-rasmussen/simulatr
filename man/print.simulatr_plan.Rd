@@ -4,14 +4,19 @@
 \alias{print.simulatr_plan}
 \title{Title}
 \usage{
-\method{print}{simulatr_plan}(x)
+\method{print}{simulatr_plan}(x, ...)
 }
 \arguments{
-\item{x}{}
+\item{x}{object}
+
+\item{...}{eh}
 }
 \value{
-
+print
 }
 \description{
 Title
+}
+\examples{
+2 + 2
 }
